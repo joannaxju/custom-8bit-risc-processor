@@ -33,7 +33,7 @@ The ISA was designed around the target computational workloads, balancing instru
 
 ## Target Programs
 
-The processor was designed to execute three computational workloads. Each program is written in the custom assembly language and converted into 9-bit machine code using the [custom assembler](assembler/). The resulting machine code is stored in instruction ROM for execution by the processor.
+The processor was designed to execute three computational workloads. Each program is written in the custom assembly language and converted into 9-bit machine code using the [custom assembler](/assembler). The resulting machine code is stored in instruction ROM for execution by the processor.
 
 ### 1. Closest and Farthest Hamming Pairs
 
@@ -41,7 +41,7 @@ Finds the minimum and maximum Hamming distances among pairs of signed 16-bit val
 
 - Input: Array of 32 half-words stored in data memory
 - Assembly: [`program1.txt`](assembly_code/program1.txt)
-- Machine code: [`machine_code_p1.txt`](macgine_code/machine_code_p1.txt)
+- Machine code: [`machine_code_p1.txt`](machine_code/machine_code_p1.txt)
 
 ### 2. Closest and Farthest Arithmetic Pairs
 
@@ -50,7 +50,7 @@ Finds the minimum and maximum absolute arithmetic differences among pairs of sig
 - Input: Array of 32 half-words stored in data memory
 - Output: Minimum and maximum differences stored in data memory
 - Assembly: [`program2.txt`](assembly_code/program2.txt)
-- Machine code: [`machine_code_p2.txt`](macgine_code/machine_code_p2.txt)
+- Machine code: [`machine_code_p2.txt`](machine_code/machine_code_p2.txt)
 
 ### 3. 16 × 16-bit Multiplication
 
@@ -61,7 +61,7 @@ The multiplication algorithm uses **shift-and-add arithmetic** rather than a ded
 - Input: Two signed 16-bit values
 - Output: 32-bit signed product
 - Assembly: [`program3.txt`](assembly_code/program3.txt)
-- Machine code: [`machine_code_p3.txt`](macgine_code/machine_code_p3.txt)
+- Machine code: [`machine_code_p3.txt`](machine_code/machine_code_p3.txt)
 
 ---
 
