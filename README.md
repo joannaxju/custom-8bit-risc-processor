@@ -31,6 +31,40 @@ The ISA was designed around the target computational workloads, balancing instru
 
 ---
 
+## Target Programs
+
+The processor was designed to execute three computational workloads. Each program is written in the custom assembly language and converted into 9-bit machine code using the [custom assembler](assembler/). The resulting machine code is stored in instruction ROM for execution by the processor.
+
+### 1. Closest and Farthest Hamming Pairs
+
+Finds the minimum and maximum Hamming distances among pairs of signed 16-bit values.
+
+- Input: Array of 32 half-words stored in data memory
+- Assembly: [`program1.txt`](assembly_code/program1.txt)
+- Machine code: [`machine_code_p1.txt`](macgine_code/machine_code_p1.txt)
+
+### 2. Closest and Farthest Arithmetic Pairs
+
+Finds the minimum and maximum absolute arithmetic differences among pairs of signed 16-bit values.
+
+- Input: Array of 32 half-words stored in data memory
+- Output: Minimum and maximum differences stored in data memory
+- Assembly: [`program2.txt`](assembly_code/program2.txt)
+- Machine code: [`machine_code_p2.txt`](macgine_code/machine_code_p2.txt)
+
+### 3. 16 × 16-bit Multiplication
+
+Performs signed 16-bit × 16-bit multiplication to produce a 32-bit result.
+
+The multiplication algorithm uses **shift-and-add arithmetic** rather than a dedicated multiplication instruction.
+
+- Input: Two signed 16-bit values
+- Output: 32-bit signed product
+- Assembly: [`program3.txt`](assembly_code/program3.txt)
+- Machine code: [`machine_code_p3.txt`](macgine_code/machine_code_p3.txt)
+
+---
+
 ## Processor Architecture
 
 ![Processor Architecture](/images/processor-architecture.png)
@@ -286,37 +320,31 @@ Jump and branch instructions calculate their target relative to the current prog
 
 ---
 
-## Target Programs
+### Custom Assembler
 
-The processor was designed to execute three computational workloads. Each program is written in the custom assembly language and converted into 9-bit machine code using the [custom assembler](assembler/). The resulting machine code is stored in instruction ROM for execution by the processor.
+A custom assembler was developed to convert assembly source files into **9-bit machine-code files** used by the processor's instruction ROM.
 
-### 1. Closest and Farthest Hamming Pairs
+The [`custom assembler`](assembler.py) automates the conversion from assembly language to machine code. It:
 
-Finds the minimum and maximum Hamming distances among pairs of signed 16-bit values.
+* Reads an assembly text file as input
+* Parses assembly instructions and operands
+* Converts each instruction into its corresponding 9-bit machine-code encoding
+* Resolves labels and calculates the required **PC-relative branch offsets**
+* Outputs the resulting machine code to a text file for use in the instruction ROM
 
-- Input: Array of 32 half-words stored in data memory
-- Assembly: [`program1.txt`](assembly_code/program1.txt)
-- Machine code: [`machine_code_p1.txt`](macgine_code/machine_code_p1.txt)
+```text
+Assembly Source (.txt)
+        ↓
+[Custom Assembler](assembler.py)
+        ↓
+9-bit Machine Code (.txt)
+        ↓
+Instruction ROM
+        ↓
+Processor
+```
 
-### 2. Closest and Farthest Arithmetic Pairs
-
-Finds the minimum and maximum absolute arithmetic differences among pairs of signed 16-bit values.
-
-- Input: Array of 32 half-words stored in data memory
-- Output: Minimum and maximum differences stored in data memory
-- Assembly: [`program2.txt`](assembly_code/program2.txt)
-- Machine code: [`machine_code_p2.txt`](macgine_code/machine_code_p2.txt)
-
-### 3. 16 × 16-bit Multiplication
-
-Performs signed 16-bit × 16-bit multiplication to produce a 32-bit result.
-
-The multiplication algorithm uses **shift-and-add arithmetic** rather than a dedicated multiplication instruction.
-
-- Input: Two signed 16-bit values
-- Output: 32-bit signed product
-- Assembly: [`program3.txt`](assembly_code/program3.txt)
-- Machine code: [`machine_code_p3.txt`](macgine_code/machine_code_p3.txt)
+**Branch chaining is handled manually in the assembly programs.** Because the ISA has a limited branch offset field, long-distance control flow is implemented by chaining multiple branches together. The assembler automatically calculates the offsets for each branch based on the resolved label locations.
 
 ---
 
@@ -359,122 +387,76 @@ The processor is implemented in **SystemVerilog** using modular RTL components. 
 
 ## Verification
 
-Verification was performed at both the module and processor levels.
+Verification was performed at both the **module level** and **processor level** using **Questa/ModelSim** simulation and waveform analysis. The SystemVerilog design was also synthesized and tested in **Intel Quartus** for FPGA development.
 
 ### Module-Level Verification
 
-Individual components were tested for:
+Individual SystemVerilog modules were tested to verify:
 
-* ALU operations
+* ALU operations and arithmetic results
 * Register-file reads and writes
-* Arithmetic operations
-* Carry behavior
+* Carry flag behavior
 * Shift and rotate operations
 * Program-counter updates
 * Instruction fetching
-* Branch behavior
-* Memory operations
+* Branch and jump behavior
+* Data memory read/write operations
+* Control and datapath signal behavior
 
 ### Processor-Level Verification
 
-The integrated processor was tested by executing the target assembly programs and examining processor state and memory outputs.
+The integrated processor was verified by executing the three target programs using dedicated testbenches:
 
-Simulation and waveform analysis were performed using **Questa/ModelSim**.
+* **Program 1:** Closest and Farthest Hamming Pairs
+* **Program 2:** Closest and Farthest Arithmetic Pairs
+* **Program 3:** 16 × 16-bit Multiplication
 
----
+When switching between programs, the **instruction ROM contents must be updated with the corresponding machine-code file** so that the processor executes the intended program.
 
-## Assembly & Machine Code
+All processor testbenches are available in the [`testbenches`](testbenches/) directory.
 
-A custom assembler converts assembly programs into the processor's 9-bit machine-code representation.
+Verification included:
 
-```text
-        Assembly
-           │
-           ▼
-    ┌─────────────┐
-    │  Assembler  │
-    └──────┬──────┘
-           │
-           ▼
-     9-bit Machine Code
-           │
-           ▼
-    Instruction Memory
-           │
-           ▼
-       CPU Execution
-```
+* Executing custom assembly programs through the complete datapath
+* Confirming correct instruction decoding and execution
+* Checking register and flag updates
+* Verifying memory reads and writes
+* Confirming branch and jump behavior
+* Comparing program outputs against expected results
 
-Example:
+### FPGA Development
 
-```asm
-addi R1, 3
-```
+The SystemVerilog files were imported into **Intel Quartus** for FPGA development and synthesis. The resulting hardware architecture was inspected using the Quartus **RTL Viewer**.
 
-encodes to:
-
-```text
-101_00_0011
-```
-
----
-
-## Development Flow
-
-```text
-ISA Design
-     │
-     ▼
-Instruction Encoding
-     │
-     ▼
-Assembly Programs
-     │
-     ▼
-RTL Component Design
-     │
-     ▼
-Module-Level Verification
-     │
-     ▼
-CPU Integration
-     │
-     ▼
-Assembler Development
-     │
-     ▼
-Machine-Code Generation
-     │
-     ▼
-Program Execution
-     │
-     ▼
-Simulation & FPGA Synthesis
-```
+![RTL Viewer](/images/processor-architecture.png)
 
 ---
 
 ## Key Design Challenges
 
+### Limited Branch Offset Bits
+
+The initial branch design used only **3 offset bits**, which severely limited the reachable branch distance and resulted in extensive instruction chaining—over 1,000 chained branches for each program. The offset field was expanded to **5 bits**, making better use of the available 9-bit instruction space and substantially reducing the amount of branch chaining required.
+
 ### 9-bit Instruction Constraint
 
-The fixed 9-bit instruction width required careful allocation of bits between opcodes, registers, function fields, immediates, and branch offsets.
+The fixed 9-bit instruction width required careful allocation of bits between opcodes, register fields, function fields, immediate values, and branch offsets.
 
 ### Hardware/Software Co-Design
 
-The ISA and assembly programs were developed together. Changes to instruction encoding directly affected the datapath, control logic, and software running on the processor.
+The ISA and assembly programs were developed together. Changes to instruction encoding directly affected the datapath, control logic, assembler, and software running on the processor.
 
 ### Limited Register Encoding
 
-Different instruction formats use different register-field widths. A-type instructions use 2-bit register fields, while B-type and D-type instructions can access the full eight-register file.
+Different instruction formats use different register-field widths. A-type instructions use **2-bit register fields**, while B-type instructions use **3-bit register fields**, allowing access to the full eight-register file.
 
 ### Multi-byte Arithmetic
 
-The 8-bit datapath required multi-byte algorithms for the 16-bit and 32-bit workloads. Carry-aware operations such as `adc` and rotate-through-carry instructions were important for these algorithms.
+The 8-bit datapath required multi-byte algorithms for the 16-bit and 32-bit workloads. Carry-aware operations such as `adc` and rotate-through-carry instructions were important for implementing these algorithms.
 
 ### Compact Control Flow
 
-PC-relative branching allows loops and conditional execution without requiring large absolute address fields, keeping the instruction format compact.
+PC-relative branching allows loops and conditional execution without requiring large absolute address fields, keeping the instruction format compact while maximizing the limited instruction width.
 
 ---
 
@@ -489,26 +471,6 @@ PC-relative branching allows loops and conditional execution without requiring l
 | Programming  | Assembly, C++                          |
 | Architecture | Custom RISC ISA                        |
 | Verification | RTL simulation, testbenches, waveforms |
-
----
-
-## Skills Demonstrated
-
-* Instruction Set Architecture Design
-* Computer Architecture
-* CPU Datapath Design
-* RTL Design
-* SystemVerilog
-* Digital Logic
-* ALU Design
-* Control Logic
-* Register File Design
-* Memory Interfaces
-* Assembly Programming
-* Assembler Development
-* Hardware Verification
-* FPGA Development
-* Hardware/Software Co-Design
 
 ---
 
