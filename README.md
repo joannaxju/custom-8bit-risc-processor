@@ -33,7 +33,7 @@ The ISA was designed around the target computational workloads, balancing instru
 
 ## Processor Architecture
 
-![Processor Architecture](processor-architecture.png)
+![Processor Architecture](/images/processor-architecture.png)
 
 ---
 
