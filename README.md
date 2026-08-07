@@ -85,8 +85,6 @@ The processor contains **eight general-purpose 8-bit registers**, `R1`–`R8`.
 
 Some instruction formats use reduced register fields to fit within the 9-bit instruction width.
 
-### Constant Registers
-
 A-type instructions use 2-bit register fields and therefore access:
 
 | Encoding | Register | Value           |
@@ -288,21 +286,26 @@ Jump and branch instructions calculate their target relative to the current prog
 
 ---
 
-## Target Programs
+## Target Programs    HELLO
 
-The processor was designed to execute three computational workloads.
+The processor was designed to execute three computational workloads. Each program is written in the custom assembly language and converted into 9-bit machine code using the [custom assembler](assembler/). The resulting machine code is stored in instruction ROM for execution by the processor.
 
 ### 1. Closest and Farthest Hamming Pairs
 
 Finds the minimum and maximum Hamming distances among pairs of signed 16-bit values.
 
-The input consists of an array of 32 half-words stored in data memory.
+- Input: Array of 32 half-words stored in data memory
+- Assembly: [`program1.txt`](program1.txt)
+- Machine code: [`machine_code_p1.txt`](machine_code_p1.txt)
 
 ### 2. Closest and Farthest Arithmetic Pairs
 
 Finds the minimum and maximum absolute arithmetic differences among pairs of signed 16-bit values.
 
-The resulting minimum and maximum values are stored in data memory.
+- Input: Array of 32 half-words stored in data memory
+- Output: Minimum and maximum differences stored in data memory
+- Assembly: [`program2.txt`](program2.txt)
+- Machine code: [`machine_code_p2.txt`](machine_code_p2.txt)
 
 ### 3. 16 × 16-bit Multiplication
 
@@ -310,15 +313,10 @@ Performs signed 16-bit × 16-bit multiplication to produce a 32-bit result.
 
 The multiplication algorithm uses **shift-and-add arithmetic** rather than a dedicated multiplication instruction.
 
-This workload makes use of:
-
-* `add`
-* `adc`
-* `shl`
-* `rlc`
-* Carry flag
-* Register operations
-* Memory operations
+- Input: Two signed 16-bit values
+- Output: 32-bit signed product
+- Assembly: [`program3.txt`](program3.txt)
+- Machine code: [`machine_code_p3.txt`](machine_code_p3.txt)
 
 ---
 
@@ -469,7 +467,7 @@ PC-relative branching allows loops and conditional execution without requiring l
 | Simulation   | Questa / ModelSim                      |
 | FPGA Design  | Intel Quartus                          |
 | Hardware     | Cyclone IV FPGA                        |
-| Programming  | Assembly, Python                       |
+| Programming  | Assembly, C++                          |
 | Architecture | Custom RISC ISA                        |
 | Verification | RTL simulation, testbenches, waveforms |
 
