@@ -62,7 +62,7 @@ The processor uses **9-bit fixed-length instructions** divided into five instruc
 | `110`  | `shl`, `rlc`, `shr`, `rrc` |
 | `111`  | `ju`, `bge`, `done`        |
 
-For the complete ISA specification, instruction encodings, and examples, see [`docs/ISA.md`](docs/ISA.md). HELLO
+For the complete ISA specification, instruction encodings, and examples, see [`ISA.md`](ISA.md).
 
 ---
 
