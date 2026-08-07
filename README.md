@@ -320,21 +320,40 @@ The multiplication algorithm uses **shift-and-add arithmetic** rather than a ded
 
 ---
 
-## Hardware Implementation
+## Hardware (SystemVerilog) Implementation
 
-The processor was implemented in **SystemVerilog** using a modular RTL design.
+The processor is implemented in **SystemVerilog** using modular RTL components. The `top_level.sv` module integrates the datapath, control logic, register file, memory, and program-control components into the complete processor.
 
-Major hardware components include:
+### Architecture Specifications
 
-* ALU
-* Register file
-* Control unit
-* Program counter
-* Instruction memory
-* Data memory
-* CPU top level
+| **Component**         | **Specification**                             |
+| --------------------- | --------------------------------------------- |
+| **Datapath**          | 8-bit                                         |
+| **Instruction Width** | 9-bit                                         |
+| **Data Memory**       | `2^8` bytes (256 bytes)                       |
+| **Instruction ROM**   | `2^10` instructions (1024 instructions)       |
+| **Register File**     | `2^3` registers (8 general-purpose registers) |
 
-Each component was developed and verified individually before integration into the complete processor.
+### Processor Modules
+
+| **Module**                                                                                                               | **Description**                                                            |
+| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| [`top_level.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/top_level.sv)         | Top-level processor module integrating all datapath and control components |
+| [`alu.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/alu.sv)                     | Arithmetic and logic operations                                            |
+| [`shifter.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/shifter.sv)             | Shift and rotate operations                                                |
+| [`compare.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/compare.sv)             | Compares register operands and generates comparison flags                  |
+| [`flags.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/flags.sv)                 | Stores and manages processor status flags                                  |
+| [`reg_file.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/reg_file.sv)           | General-purpose register file                                              |
+| [`reg_lut.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/reg_lut.sv)             | Register lookup / constant register mapping                                |
+| [`pc.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/pc.sv)                       | Program counter                                                            |
+| [`ir.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/ir.sv)                       | Instruction register                                                       |
+| [`control.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/control.sv)             | Instruction decoding and processor control signals                         |
+| [`branch_jump.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/branch_jump.sv)     | Branch and jump address/control logic                                      |
+| [`data_memory.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/data_memory.sv)     | Data memory interface and storage                                          |
+| [`alu_src_mux.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/alu_src_mux.sv)     | Selects ALU input sources                                                  |
+| [`c_src_mux.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/c_src_mux.sv)         | Selects carry/input source                                                 |
+| [`data_src_mux.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/data_src_mux.sv)   | Selects data source for the datapath                                       |
+| [`reg_w_src_mux.sv`](https://github.com/joannaxju/custom-8bit-risc-processor/blob/main/processor_files/reg_w_src_mux.sv) | Selects the value written back to the register file                        |
 
 ---
 
