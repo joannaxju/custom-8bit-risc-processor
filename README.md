@@ -324,25 +324,13 @@ Jump and branch instructions calculate their target relative to the current prog
 
 A custom assembler was developed to convert assembly source files into **9-bit machine-code files** used by the processor's instruction ROM.
 
-The [`custom assembler`](assembler.py) automates the conversion from assembly language to machine code. It:
+The [`custom assembler`](/assembler) automates the conversion from assembly language to machine code. It:
 
 * Reads an assembly text file as input
 * Parses assembly instructions and operands
 * Converts each instruction into its corresponding 9-bit machine-code encoding
 * Resolves labels and calculates the required **PC-relative branch offsets**
 * Outputs the resulting machine code to a text file for use in the instruction ROM
-
-```text
-Assembly Source (.txt)
-        ↓
-[Custom Assembler](assembler.py)
-        ↓
-9-bit Machine Code (.txt)
-        ↓
-Instruction ROM
-        ↓
-Processor
-```
 
 **Branch chaining is handled manually in the assembly programs.** Because the ISA has a limited branch offset field, long-distance control flow is implemented by chaining multiple branches together. The assembler automatically calculates the offsets for each branch based on the resolved label locations.
 
