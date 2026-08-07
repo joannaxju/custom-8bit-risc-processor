@@ -4,13 +4,24 @@
 
 | **TYPE** | **FORMAT** | **CORRESPONDING INSTRUCTIONS** | 
 | -------- | -------- | ----------------- |
-| A |  | 'and', 'xor', 'add', 'adc' |
-| B |  | 'mov', 'lb', 'sb', 'cmp' |
-| C |  | 'addi' |
-| D |  | 'shl', 'rlc', 'shr', 'rrc' |
-| E |  | 'ju', 'bge' |
+| A    | `opcode[8:6] register[5:4] register[3:2] funct[1:0]` | `and`, `xor`, `add`, `adc` |
+| B    | `opcode[8:6] register[5:3] register[2:0]`            | `mov`, `lb`, `sb`, `cmp`   |
+| C    | `opcode[8:6] register[5:4] immediate[3:0]`           | `addi`                     |
+| D    | `opcode[8:6] funct[5:4] unused[3] register[2:0]`     | `shl`, `rlc`, `shr`, `rrc` |
+| E    | `opcode[8:6] type[5] offset[4:0]`                    | `ju`, `bge`, `done`        |
 
----
+## Opcode Map
+
+| **Opcode** | **Instruction Group** |
+| ------ | -------------------------- |
+| `000`  | `and`, `xor`, `add`, `adc` |
+| `001`  | `mov`                      |
+| `010`  | `lb`                       |
+| `011`  | `sb`                       |
+| `100`  | `cmp`                      |
+| `101`  | `addi`                     |
+| `110`  | `shl`, `rlc`, `shr`, `rrc` |
+| `111`  | `ju`, `bge`, `done`        |
 
 ## Operations
 
@@ -33,7 +44,7 @@
 | `bge` = branch if greater than or equal | E | 3 bit opcode (`111`)<br>1 bit type (`1`)<br>5 bit offset (`XXXXX`) | `bge 7` ⇔ `111_1_00111`<br><br># after bge instruction and less than flag is 0, program counter now holds pc + 7 | |
 | `done` = signal done flag | E | 3 bit opcode (`111`)<br>1 bit type (`0`)<br>5 bit offset (`00000`) | `done` ⇔ `111_0_00000`<br><br># after done instruction, done flag is set to 1 | |
 
----
+
 
 # Internal Operands
 
