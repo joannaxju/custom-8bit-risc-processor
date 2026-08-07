@@ -1,0 +1,122 @@
+#program 1 assembly code
+start:          
+                and RL, RM
+                mov R3, R1
+                addi R1, 15
+                addi R1, 1
+                mov R3, R2
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                sb R1, R3
+                addi R3, 1
+                sb R2, R3
+                and RL, RM
+                mov R3, R8
+outer_loop:     
+                mov R8, R1
+                addi R1, 2
+                mov R1, R7
+inner_loop:     
+                lb R8, R1
+                lb R7, R2
+                xor R1, R2 
+                mov R3, R5
+                cmp R7, R8
+                bge out_3
+out_c3:         
+                ju outer_loop   
+out_3:
+                mov R7, R1
+                addi R1, 1
+                mov R1, R7
+                mov R8, R1
+                addi R1, 1
+                mov R1, R4
+                cmp R7, R8
+                bge in_2
+in_c2:          
+                ju inner_loop   
+in_2:
+                lb R4, R1
+                lb R7, R2
+                xor R1, R2
+                mov R3, R6
+                and RL, RM
+                mov R3, R1
+                mov R3, R2
+                mov R3, R4
+count_loop:     
+                shr R5
+                adc R1, R2
+                mov R3, R1
+                shr R6
+                cmp R7, R8
+                bge out_2
+out_c2:         
+                ju out_c3   
+out_2:
+                adc R1, R2
+                mov R3, R1
+                addi R4, 1
+                and RL, RM
+                addi R3, 8
+                cmp R4, R3
+                bge count_end
+                ju count_loop
+count_end:      
+                and RL, RM
+                addi R3, 15
+                cmp R7, R8
+                bge in_1
+in_c1:          
+                ju in_c2   
+in_1:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                lb R3, R5
+                cmp R1, R5
+                bge cont1
+                sb R1, R3
+cont1:          
+                addi R3, 1
+                lb R3, R6
+                cmp R6, R1
+                bge cont2
+                cmp R7, R8
+                bge out_1
+out_c1:         
+                ju out_c2   
+out_1:
+                sb R1, R3
+cont2:          
+                mov R7, R1
+                addi R1, 1
+                mov R1, R7
+                and RL, RM
+                addi R3, 15  
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                cmp R7, R3
+                bge inner_end
+                ju in_c1
+inner_end:      
+                mov R8, R1
+                addi R1, 2
+                mov R1, R8
+                and RL, RM
+                addi R3, 15  
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R3
+                bge outer_end
+                ju out_c1
+outer_end:      
+                done

@@ -1,0 +1,1187 @@
+#program 3 assembly code
+start:
+                and RL, RM
+                mov R3, R8
+loop:
+                mov R8, R1
+                addi R1, 15
+                addi R1, 15
+                addi R1, 15
+                addi R1, 15
+                addi R1, 4
+                and RL, RM
+                sb R3, R1
+                addi R1, 1
+                sb R3, R1
+                addi R1, 1
+                sb R3, R1
+                addi R1, 1
+                sb R3, R1
+
+                mov R8, R3
+                lb R3, R1
+                addi R3, 2
+                lb R3, R2
+                and R1, RM
+                mov R3, R1
+                and R2, RM
+                mov R3, R2
+                xor R1, R2
+                mov R3, R1
+                and RL, RM
+                cmp R8, R8
+                bge loop41
+loop_c41:        
+                ju loop
+loop41:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 9
+                sb R1, R3
+                lb R8, R1
+                and R1, RM
+                mov R3, R1
+                cmp R8, R8
+                bge loop40
+loop_c40:        
+                ju loop_c41
+loop40:
+                xor R1, RM
+                shl R3
+                rlc R3
+                mov R3, R1
+                and RL, RM
+                addi R3, 1
+                cmp R1, R3
+                bge cont1a
+                lb R8, R1
+                and RL, RM
+                mov R3, R2
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                cmp R8, R8
+                bge loop39
+loop_c39:        
+                ju loop_c40
+loop39:
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                cmp R8, R8
+                bge cont1b
+cont1a:        
+                cmp R8, R8
+                bge cont1
+cont1b:        
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                xor R1, R2
+                mov R3, R4
+                mov R8, R1
+                cmp R8, R8
+                bge loop38
+loop_c38:        
+                ju loop_c39
+loop38: 
+                addi R1, 1
+                lb R1, R1
+                xor R1, R2
+                addi R3, 1
+                mov R3, R5
+                and RL, RM
+                mov R3, R2
+                mov R4, R1
+                adc R1, R2
+                mov R3, R4
+                mov R8, R1
+                sb R4, R1
+                addi R1, 1
+                sb R5, R1
+cont1:
+                mov R8, R1
+                addi R1, 2
+                lb R1, R1
+                and R1, RM
+                mov R3, R1
+                xor R1, RM
+                shl R3
+                cmp R8, R8
+                bge loop37
+loop_c37:        
+                ju loop_c38
+loop37:
+                rlc R3
+                mov R3, R1
+                and RL, RM
+                addi R3, 1
+                cmp R1, R3
+                bge cont2a
+                mov R8, R1
+                addi R1, 2
+                lb R1, R1
+                and RL, RM
+                mov R3, R2
+                addi R2, 15
+                addi R2, 15
+                cmp R8, R8
+                bge loop36
+loop_c36:        
+                ju loop_c37
+loop36:
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                cmp R8, R8
+                bge loop35
+loop_c35:        
+                ju loop_c36
+loop35:
+                addi R2, 15
+                addi R2, 15
+                cmp R8, R8
+                bge cont2b
+cont2a:        
+                cmp R8, R8
+                bge cont2
+cont2b:   
+                addi R2, 15
+                xor R1, R2
+                mov R3, R4
+                mov R8, R1 
+                addi R1, 3
+                lb R1, R1
+                xor R1, R2
+                addi R3, 1
+                mov R3, R5
+                and RL, RM
+                mov R3, R2
+                mov R4, R1
+                adc R1, R2
+                mov R3, R4
+                mov R8, R1
+                addi R1, 2
+                sb R4, R1
+                addi R1, 1
+                cmp R8, R8
+                bge loop34
+loop_c34:        
+                ju loop_c35
+loop34:
+                sb R5, R1
+cont2:          
+                mov R8, R3
+                addi R3, 1
+                lb R3, R7
+                addi R3, 2
+                lb R3, R5
+                and RL, RM
+                mov R3, R6
+                mov R3, R4
+AL_BL:          
+                mov R5, R1
+                and R1, RL
+                mov R3, R1
+                xor R1, RL
+                mov R3, R1
+                and RL, RM
+                cmp R8, R8
+                bge AL_BL6
+AL_BL_c6:        
+                ju AL_BL
+AL_BL6:
+                cmp R8, R8
+                bge loop33
+loop_c33:        
+                ju loop_c34
+loop33:
+                addi R3, 1
+                cmp R1, R3
+                bge add1_end1
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 3
+                lb R3, R1
+                mov R7, R2
+                add R1, R2
+                mov R3, R2  
+                and RL, RM
+                cmp R8, R8
+                bge AL_BL5
+AL_BL_c5:        
+                ju AL_BL_c6
+AL_BL5:
+                mov R3, R1
+                cmp R8, R8
+                bge loop32
+loop_c32:        
+                ju loop_c33
+loop32:
+                rlc R1
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add1_enda
+add1_end1:        
+                cmp R8, R8
+                bge add1_end2
+add1_enda:   
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge AL_BL4
+AL_BL_c4:        
+                ju AL_BL_c5
+AL_BL4:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                sb R1, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add1_endb
+add1_end2:        
+                cmp R8, R8
+                bge add1_end3
+add1_endb: 
+                addi R3, 15
+                cmp R8, R8
+                bge loop31
+loop_c31:        
+                ju loop_c32
+loop31:
+                addi R3, 4
+                addi R3, 3
+                cmp R8, R8
+                bge AL_BL3
+AL_BL_c3:        
+                ju AL_BL_c4
+AL_BL3:
+                sb R2, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 2
+                lb R3, R1
+                and RL, RM
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add1_endc
+add1_end3:        
+                cmp R8, R8
+                bge add1_end4
+add1_endc: 
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge AL_BL2
+AL_BL_c2:        
+                ju AL_BL_c3
+AL_BL2:
+                cmp R8, R8
+                bge loop30
+loop_c30:        
+                ju loop_c31
+loop30:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                lb R3, R2
+                add R1, R2
+                mov R3, R1
+                mov R6, R2
+                cmp R8, R8
+                bge add1_endd
+add1_end4:        
+                cmp R8, R8
+                bge add1_end
+add1_endd: 
+                add R1, R2
+                mov R3, R1 
+                mov R8, R3
+                cmp R8, R8
+                bge AL_BL1
+AL_BL_c1:        
+                ju AL_BL_c2
+AL_BL1:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                cmp R8, R8
+                bge loop29
+loop_c29:        
+                ju loop_c30
+loop29:
+                addi R3, 2
+                sb R1, R3
+add1_end:
+                shl R7
+                rlc R6
+                shr R5
+                addi R4, 1
+                and RL, RM
+                addi R3, 8
+                cmp R4, R3
+                bge AL_BL_end
+                ju AL_BL_c1
+AL_BL_end:
+                mov R8, R3
+                lb R3, R7
+                addi R3, 3
+                lb R3, R5
+                cmp R8, R8
+                bge loop28
+loop_c28:        
+                ju loop_c29
+loop28:
+                and RL, RM
+                mov R3, R6
+                mov R3, R4
+AM_BL:
+                mov R5, R1
+                and R1, RL
+                mov R3, R1
+                xor R1, RL
+                mov R3, R1
+                and RL, RM
+                addi R3, 1
+                cmp R8, R8
+                bge AM_BL9
+AM_BL_c9:        
+                ju AM_BL
+AM_BL9:
+                cmp R1, R3
+                bge add2_end1
+                mov R8, R3
+                addi R3, 15
+                cmp R8, R8
+                bge loop27
+loop_c27:        
+                ju loop_c28
+loop27:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 2
+                lb R3, R1
+                mov R7, R2
+                add R1, R2
+                mov R3, R2
+                and RL, RM
+                cmp R8, R8
+                bge AM_BL8
+AM_BL_c8:        
+                ju AM_BL_c9
+AM_BL8:
+                mov R3, R1
+                rlc R1
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add2_enda
+add2_end1:        
+                cmp R8, R8
+                bge add2_end2
+add2_enda: 
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge loop26
+loop_c26:        
+                ju loop_c27
+loop26:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                sb R1, R3
+                cmp R8, R8
+                bge AM_BL7
+AM_BL_c7:        
+                ju AM_BL_c8
+AM_BL7:
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                cmp R8, R8
+                bge add2_endb
+add2_end2:        
+                cmp R8, R8
+                bge add2_end3
+add2_endb: 
+                addi R3, 2
+                sb R2, R3
+                mov R8, R3
+                cmp R8, R8
+                bge loop25
+loop_c25:        
+                ju loop_c26
+loop25:
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge AM_BL6
+AM_BL_c6:        
+                ju AM_BL_c7
+AM_BL6:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 1
+                lb R3, R1
+                and RL, RM
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add2_endc
+add2_end3:        
+                cmp R8, R8
+                bge add2_end4
+add2_endc: 
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                cmp R8, R8
+                bge AM_BL5
+AM_BL_c5:        
+                ju AM_BL_c6
+AM_BL5:
+                bge loop24
+loop_c24:        
+                ju loop_c25
+loop24:
+                lb R3, R2
+                add R1, R2
+                mov R3, R1
+                mov R6, R2
+                add R1, R2
+                mov R3, R2
+                and RL, RM
+                mov R3, R1
+                rlc R1
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add2_endd
+add2_end4:        
+                cmp R8, R8
+                bge add2_end5
+add2_endd: 
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge AM_BL4
+AM_BL_c4:        
+                ju AM_BL_c5
+AM_BL4:
+                addi R3, 15
+                cmp R8, R8
+                bge loop23
+loop_c23:        
+                ju loop_c24
+loop23:
+                addi R3, 15
+                addi R3, 8
+                sb R1, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 1
+                sb R2, R3
+                cmp R8, R8
+                bge add2_ende
+add2_end5:        
+                cmp R8, R8
+                bge add2_end6
+add2_ende: 
+                cmp R8, R8
+                bge AM_BL3
+AM_BL_c3:        
+                ju AM_BL_c4
+AM_BL3:
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge loop22
+loop_c22:        
+                ju loop_c23
+loop22:
+                addi R3, 15
+                addi R3, 4
+                lb R3, R1
+                and RL, RM
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge AM_BL2
+AM_BL_c2:        
+                ju AM_BL_c3
+AM_BL2:
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add2_endf
+add2_end6:        
+                cmp R8, R8
+                bge add2_end
+add2_endf: 
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                lb R3, R2
+                add R1, R2
+                cmp R8, R8
+                bge loop21
+loop_c21:        
+                ju loop_c22
+loop21:
+                mov R3, R1
+                mov R8, R3
+                cmp R8, R8
+                bge AM_BL1
+AM_BL_c1:        
+                ju AM_BL_c2
+AM_BL1:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                sb R1, R3
+add2_end:
+                shl R7
+                rlc R6
+                shr R5
+                addi R4, 1
+                and RL, RM
+                addi R3, 8
+                cmp R8, R8 
+                bge loop20
+loop_c20:        
+                ju loop_c21
+loop20:
+                cmp R4, R3
+                bge AM_BL_end
+                ju AM_BL_c1
+AM_BL_end:
+                mov R8, R3
+                addi R3, 1
+                lb R3, R7
+                addi R3, 1
+                lb R3, R5
+                and RL, RM
+                mov R3, R6
+                mov R3, R4
+AL_BM:
+                mov R5, R1 
+                and R1, RL
+                mov R3, R1
+                xor R1, RL
+                mov R3, R1
+                and RL, RM
+                addi R3, 1
+                cmp R1, R3
+                bge add3_end1
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge loop19
+loop_c19:        
+                ju loop_c20
+loop19:
+                cmp R8, R8
+                bge AL_BM8
+AL_BM_c8:        
+                ju AL_BM
+AL_BM8:
+                addi R3, 15
+                addi R3, 4
+                addi R3, 2
+                lb R3, R1
+                mov R7, R2
+                add R1, R2
+                mov R3, R2
+                and RL, RM
+                mov R3, R1
+                rlc R1
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add3_enda
+add3_end1:        
+                cmp R8, R8
+                bge add3_end2
+add3_enda: 
+                cmp R8, R8
+                bge AL_BM7
+AL_BM_c7:        
+                ju AL_BM_c8
+AL_BM7:
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge loop18
+loop_c18:        
+                ju loop_c19
+loop18:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                sb R1, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 2
+                sb R2, R3
+                cmp R8, R8
+                bge add3_endb
+add3_end2:        
+                cmp R8, R8
+                bge add3_end3
+add3_endb: 
+                cmp R8, R8
+                bge AL_BM6
+AL_BM_c6:        
+                ju AL_BM_c7
+AL_BM6:
+                cmp R8, R8
+                bge loop17
+loop_c17:        
+                ju loop_c18
+loop17:
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 1
+                lb R3, R1
+                and RL, RM
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add3_endc
+add3_end3:        
+                cmp R8, R8
+                bge add3_end4
+add3_endc: 
+                addi R3, 15
+                cmp R8, R8
+                bge AL_BM5
+AL_BM_c5:        
+                ju AL_BM_c6
+AL_BM5:
+                bge loop16
+loop_c16:        
+                ju loop_c17
+loop16:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                lb R3, R2
+                add R1, R2
+                mov R3, R1
+                mov R6, R2
+                add R1, R2
+                mov R3, R2
+                and RL, RM
+                cmp R8, R8
+                bge add3_endd
+add3_end4:        
+                cmp R8, R8
+                bge add3_end5
+add3_endd: 
+                mov R3, R1
+                rlc R1
+                cmp R8, R8
+                bge AL_BM4
+AL_BM_c4:        
+                ju AL_BM_c5
+AL_BM4:
+                bge loop15
+loop_c15:        
+                ju loop_c16
+loop15:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                sb R1, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add3_ende
+add3_end5:        
+                cmp R8, R8
+                bge add3_end6
+add3_ende: 
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge AL_BM3
+AL_BM_c3:        
+                ju AL_BM_c4
+AL_BM3:
+                addi R3, 4
+                cmp R8, R8
+                bge loop14
+loop_c14:        
+                ju loop_c15
+loop14:
+                addi R3, 1
+                sb R2, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                lb R3, R1
+                and RL, RM
+                cmp R8, R8
+                bge add3_endf
+add3_end6:        
+                cmp R8, R8
+                bge add3_end
+add3_endf: 
+                cmp R8, R8
+                bge AL_BM2
+AL_BM_c2:        
+                ju AL_BM_c3
+AL_BM2:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                cmp R8, R8
+                bge loop13
+loop_c13:        
+                ju loop_c14
+loop13:
+                lb R3, R2
+                add R1, R2
+                mov R3, R1
+                cmp R8, R8
+                bge AL_BM1
+AL_BM_c1:        
+                ju AL_BM_c2
+AL_BM1:
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                sb R1, R3
+add3_end:
+                shl R7
+                rlc R6
+                shr R5
+                addi R4, 1
+                and RL, RM
+                addi R3, 8
+                cmp R8, R8
+                bge loop12
+loop_c12:        
+                ju loop_c13
+loop12:
+                cmp R4, R3
+                bge AL_BM_end
+                ju AL_BM_c1
+AL_BM_end:
+                mov R8, R3
+                lb R3, R7
+                addi R3, 2
+                lb R3, R5
+                and RL, RM
+                mov R3, R6
+                mov R3, R4
+AM_BM:
+                mov R5, R1
+                and R1, RL
+                mov R3, R1
+                xor R1, RL
+                cmp R8, R8
+                bge loop11
+loop_c11:        
+                ju loop_c12
+loop11:
+                mov R3, R1
+                and RL, RM
+                addi R3, 1
+                cmp R1, R3
+                bge add4_end1
+                mov R8, R3
+                addi R3, 15
+                cmp R8, R8
+                bge AM_BM5
+AM_BM_c5:        
+                ju AM_BM
+AM_BM5:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                addi R3, 1
+                lb R3, R1
+                mov R7, R2
+                add R1, R2
+                mov R3, R2
+                and RL, RM
+                mov R3, R1
+                rlc R1
+                cmp R8, R8
+                bge loop10
+loop_c10:        
+                ju loop_c11
+loop10:
+                bge add4_enda
+add4_end1:        
+                cmp R8, R8
+                bge add4_end2
+add4_enda:
+                cmp R8, R8
+                bge AM_BM4
+AM_BM_c4:        
+                ju AM_BM_c5
+AM_BM4:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                sb R1, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge add4_endb
+add4_end2:        
+                cmp R8, R8
+                bge add4_end3
+add4_endb:
+                cmp R8, R8
+                bge AM_BM3
+AM_BM_c3:        
+                ju AM_BM_c4
+AM_BM3:
+                bge loop9
+loop_c9:        
+                ju loop_c10
+loop9:
+                addi R3, 15
+                addi R3, 4
+                addi R3, 1
+                sb R2, R3
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                lb R3, R1
+                and RL, RM
+                cmp R8, R8
+                bge add4_endc
+add4_end3:        
+                cmp R8, R8
+                bge add4_end4
+add4_endc:
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge AM_BM2
+AM_BM_c2:        
+                ju AM_BM_c3
+AM_BM2:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge loop8
+loop_c8:        
+                ju loop_c9
+loop8:
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 8
+                lb R3, R2
+                add R1, R2
+                mov R3, R1
+                mov R6, R2
+                add R1, R2
+                mov R3, R1
+                cmp R8, R8
+                bge add4_endd
+add4_end4:        
+                cmp R8, R8
+                bge add4_end
+add4_endd:
+                cmp R8, R8
+                bge AM_BM1
+AM_BM_c1:        
+                ju AM_BM_c2
+AM_BM1:
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                sb R1, R3
+add4_end:
+                shl R7
+                rlc R6
+                cmp R8, R8
+                bge loop7
+loop_c7:        
+                ju loop_c8
+loop7:
+                shr R5
+                addi R4, 1
+                and RL, RM
+                addi R3, 8
+                cmp R4, R3
+                bge AM_BM_end
+                ju AM_BM_c1
+AM_BM_end:
+                and RL, RM
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                cmp R8, R8
+                bge loop6
+loop_c6:        
+                ju loop_c7
+loop6:
+                addi R3, 15
+                addi R3, 9
+                lb R3, R1
+                shl R1
+                rlc R1
+                xor R1, RL
+                mov R3, R1
+                and RL, RM
+                cmp R8, R8
+                bge loop5
+loop_c5:        
+                ju loop_c6
+loop5:
+                addi R3, 1
+                cmp R1, R3
+                bge cont3a
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                lb R3, R4
+                addi R3, 1
+                lb R3, R5
+                addi R3, 1
+                lb R3, R6
+                addi R3, 1
+                lb R3, R7
+                cmp R8, R8
+                bge loop4
+loop_c4:        
+                ju loop_c5
+loop4:
+                and RL, RM
+                mov R3, R2
+                addi R2, 15
+                cmp R8, R8
+                bge cont3b
+cont3a:        
+                cmp R8, R8
+                bge cont3c
+cont3b:   
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                addi R2, 15
+                cmp R8, R8
+                bge loop3
+loop_c3:        
+                ju loop_c4
+loop3:
+                addi R2, 15
+                addi R2, 15
+                mov R4, R1
+                cmp R8, R8
+                bge cont3d
+cont3c:        
+                cmp R8, R8
+                bge cont3e
+cont3d:   
+                xor R1, R2
+                mov R3, R4
+                mov R5, R1
+                xor R1, R2
+                mov R3, R5
+                mov R6, R1
+                xor R1, R2
+                mov R3, R6
+                mov R7, R1
+                xor R1, R2
+                mov R3, R7
+                and RL, RM
+                mov R3, R2
+                mov R7, R1
+                cmp R8, R8
+                bge loop2
+loop_c2:        
+                ju loop_c3
+loop2:
+                addi R1, 1
+                mov R1, R7
+                mov R6, R1
+                adc R1, R2
+                cmp R8, R8
+                bge cont3f
+cont3e:        
+                cmp R8, R8
+                bge cont3
+cont3f:   
+                mov R3, R6
+                mov R5, R1
+                adc R1, R2
+                mov R3, R5
+                mov R4, R1
+                adc R1, R2
+                mov R3, R4
+                mov R8, R3
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                sb R4, R3
+                cmp R8, R8
+                bge loop1
+loop_c1:        
+                ju loop_c2
+loop1:
+                addi R3, 1
+                sb R5, R3
+                addi R3, 1
+                sb R6, R3
+                addi R3, 1
+                sb R7, R3
+cont3:
+                mov R8, R1
+                addi R1, 4
+                mov R1, R8
+                and RL, RM
+                addi R3, 15   
+                addi R3, 15
+                addi R3, 15
+                addi R3, 15
+                addi R3, 4
+                cmp R8, R3
+                bge loop_end
+                ju loop_c1
+loop_end:
+                done
