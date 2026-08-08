@@ -102,7 +102,7 @@ For the complete ISA specification, instruction encodings, and examples, see [`I
 
 ## Register Architecture
 
-The processor contains **eight general-purpose 8-bit registers**, `R1`–`R8`.
+The processor contains **eight general-purpose 8-bit registers**, `R1`–`R8`, along with two **dedicated read-only constant registers**, `RL` and `RM`.
 
 ### General-Purpose Registers
 
@@ -119,7 +119,7 @@ The processor contains **eight general-purpose 8-bit registers**, `R1`–`R8`.
 
 Some instruction formats use reduced register fields to fit within the 9-bit instruction width.
 
-A-type instructions use 2-bit register fields and therefore access:
+A-type instructions use 2-bit register fields and therefore access `R1`, `R2`, and two dedicated read-only constant registers:
 
 | Encoding | Register | Value           |
 | -------- | -------- | --------------- |
@@ -128,7 +128,7 @@ A-type instructions use 2-bit register fields and therefore access:
 | `10`     | RL       | `0b0000_0001`   |
 | `11`     | RM       | `0b1000_0000`   |
 
-`RL` and `RM` are read-only constant registers that provide frequently used values without requiring immediate operands.
+`RL` and `RM` are **not additional general-purpose registers**. They are read-only constant register mappings that provide frequently used values without requiring immediate operands.
 
 A-type instructions write their result to **R3**, giving this instruction group accumulator-like behavior.
 
@@ -322,12 +322,12 @@ Jump and branch instructions calculate their target relative to the current prog
 
 ### Custom Assembler
 
-A custom assembler was developed to convert assembly source files into **9-bit machine-code files** used by the processor's instruction ROM.
+A [`custom assembler`](/assembler) written in C++ was developed to convert assembly source files into **9-bit machine-code files** used by the processor's instruction ROM.
 
-The [`custom assembler`](/assembler) automates the conversion from assembly language to machine code. It:
+The assembler:
 
 * Reads an assembly text file as input
-* Parses assembly instructions and operands
+* Parses assembly instructions, operands, and labels
 * Converts each instruction into its corresponding 9-bit machine-code encoding
 * Resolves labels and calculates the required **PC-relative branch offsets**
 * Outputs the resulting machine code to a text file for use in the instruction ROM
